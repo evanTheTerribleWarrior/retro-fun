@@ -2,6 +2,18 @@
 
       	include vcs.h
       	include macro.h
+
+
+;PAL = 1	;uncomment for PAL
+	ifnconst PAL
+	
+SCANLINES = 96
+        
+        else
+        
+SCANLINES = 114
+
+	endif
         
         seg.u Variables 	; uninitialised variable space
         org $80			; start of RAM
@@ -128,7 +140,7 @@ Kernel:
         sta VBLANK
 
 	;;; Set X = 96 to traverse all visible scanlines (192 / 2)
-	ldx #96
+	ldx #SCANLINES
        
 ;;;; Start Drawing
 KernelLoop:
