@@ -211,11 +211,9 @@ CheckButtonPress:
         bit INPT4
         bne EndCheck
         
-        lda P0XPos
-        
+        lda P0XPos      
         sta MissileXPos
         lda P0YPos
-        
         sta MissileYPos
 
 EndCheck:
@@ -229,8 +227,9 @@ CheckMissileCollision:
         bne .CollisionM0
 	jmp EndCollisionCheck
 .CollisionM0:
-	lda #0
+	lda #0      
         sta MissileXPos
+        sta MissileYPos
         jsr GetRandomTargetPos
 
 EndCollisionCheck:
@@ -336,4 +335,3 @@ TargetColour
       	org $FFFC
       	.word Start       
       	.word Start       
-
